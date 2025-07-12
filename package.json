@@ -1,0 +1,47 @@
+{
+  "name": "notefolio",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "dev": "./scripts/start-dev.sh",
+    "docker:build-dev": "docker build --target development -t notefolio:dev .",
+    "docker:build-prod": "docker build --target production -t notefolio:prod .",
+    "docker:run-dev": "docker run -it --name notefolio-front-dev -p 3000:3000 -v $(pwd):/workspace notefolio:dev",
+    "docker:run-prod": "docker run -d --name notefolio-front-prod -p 8080:80 notefolio:prod",
+    "docker:stop-dev": "docker stop notefolio-front-dev && docker rm notefolio-front-dev",
+    "docker:stop-prod": "docker stop notefolio-front-prod && docker rm notefolio-front-prod",
+    "docker:logs-dev": "docker logs -f notefolio-front-dev",
+    "docker:logs-prod": "docker logs -f notefolio-front-prod"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
